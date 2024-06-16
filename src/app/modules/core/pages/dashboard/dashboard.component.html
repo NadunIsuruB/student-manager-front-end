@@ -1,6 +1,6 @@
 <div class="page-container">
     <div class="title">
-        Student Manager
+        Day School International
     </div>
     <div class="dashboard-container">
         <div class="top-actions">
@@ -24,7 +24,7 @@
                     <th mat-header="actions">Actions</th>
                 </tr>
               
-                <tr *ngFor="let student of students">
+                <tr *ngFor="let student of students; let i = index" (click)="ClickedRow(i)" [class.active]="i == highlightRow">
                     <td>{{ student.firstName }}</td>
                     <td>{{ student.lastName }}</td>
                     <td>{{ student.nic }}</td>

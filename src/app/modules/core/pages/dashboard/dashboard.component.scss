@@ -74,6 +74,11 @@
             width: 195px;
             padding: 10px 5px;
         }
+
+        tr.active td {
+            background-color: var(--tertiary-color) !important;
+            color: var(--secondary-color);
+        }
     }
 
     button {

@@ -25,6 +25,8 @@ export class DashboardComponent implements OnInit, OnDestroy {
   pageIndex = 1;
   pageSizeOptions = [2, 10, 25];
 
+  highlightRow = -1;
+
   studentQuery: query = {
     page: this.pageIndex,
     pageSize: this.pageSize,
@@ -143,6 +145,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
   deleteStudent(id: number) {
     //confirmation
+
     this.studentService.delete(id.toString())
     .pipe(
       takeUntil(this.unsubscribe$),
@@ -184,6 +187,10 @@ export class DashboardComponent implements OnInit, OnDestroy {
         return err;
       })
     ).subscribe();
+  }
+
+  ClickedRow(i: number) {
+    this.highlightRow = i;
   }
   
   ngOnDestroy(): void {

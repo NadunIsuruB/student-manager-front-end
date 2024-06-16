@@ -11,11 +11,10 @@ import { HttpInterceptorInterceptor } from 'src/app/services/http-interceptor.in
 import { ReactiveFormsModule } from '@angular/forms';
 import { EditStudentComponent } from './pages/dashboard/components/edit-student/edit-student.component';
 
-
 @NgModule({
   declarations: [
     DashboardComponent,
-    EditStudentComponent
+    EditStudentComponent,
   ],
   imports: [
     CommonModule,
