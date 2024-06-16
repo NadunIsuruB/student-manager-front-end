@@ -6,6 +6,8 @@ import { MatTableDataSource } from '@angular/material/table';
 import { query } from '../../models/query.interface';
 import { FormBuilder, FormControl } from '@angular/forms';
 import { PageEvent } from '@angular/material/paginator';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { EditStudentComponent } from './components/edit-student/edit-student.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -33,7 +35,12 @@ export class DashboardComponent implements OnInit, OnDestroy {
 
   pageEvent: PageEvent;
 
-  constructor(private router: Router, private studentService: StudentService, private fb: FormBuilder) { }
+  constructor(
+    private router: Router, 
+    private studentService: StudentService, 
+    private fb: FormBuilder,
+    private dialog: MatDialog
+  ) { }
 
   ngOnInit(): void {
     this.searchControl = this.fb.control('');
@@ -102,21 +109,81 @@ export class DashboardComponent implements OnInit, OnDestroy {
   }
 
   editStudent(id: number) {
-    
+    const dialogRef: MatDialogRef<EditStudentComponent> = this.dialog.open(EditStudentComponent, {
+      data: this.students.find(student => student.id === id),
+      height: '600px',
+      width: '800px'
+    });
+
+    dialogRef.componentInstance.saveEvent.pipe(
+      takeUntil(this.unsubscribe$),
+      tap((res: any) => {
+        if (res.id) {
+          this.studentService.updateStudent(res)
+          .pipe(
+            takeUntil(this.unsubscribe$),
+            tap((res: any) => {
+              this.getStudents(this.studentQuery);
+              dialogRef.close();
+            }),
+            catchError((err)=>{
+              console.log(err);
+              return err;
+            })
+          ).subscribe();
+          return;
+        }
+      }),
+      catchError((err)=>{
+        console.log(err);
+        return err;
+      })
+    ).subscribe();
   }
 
   deleteStudent(id: number) {
-    // this.studentService.deleteStudent(id)
-    // .pipe(
-    //   takeUntil(this.unsubscribe$),
-    //   tap((res: any) => {
-    //     this.getStudents(this.defaultQuery);
-    //   }),
-    //   catchError((err)=>{
-    //     console.log(err);
-    //     return err;
-    //   })
-    // ).subscribe();
+    //confirmation
+    this.studentService.delete(id.toString())
+    .pipe(
+      takeUntil(this.unsubscribe$),
+      tap((res: any) => {
+        this.getStudents(this.studentQuery);
+      }),
+      catchError((err)=>{
+        console.log(err);
+        return err;
+      })
+    ).subscribe();
+  }
+
+  createStudent() {
+    const dialogRef: MatDialogRef<EditStudentComponent> = this.dialog.open(EditStudentComponent, {
+      data: {},
+      height: '600px',
+      width: '800px'
+    });
+
+    dialogRef.componentInstance.saveEvent.pipe(
+      takeUntil(this.unsubscribe$),
+      tap((res: any) => {
+        this.studentService.addStudent(res)
+        .pipe(
+          takeUntil(this.unsubscribe$),
+          tap((res: any) => {
+            this.getStudents(this.studentQuery);
+            dialogRef.close();
+          }),
+          catchError((err)=>{
+            console.log(err);
+            return err;
+          })
+        ).subscribe();
+      }),
+      catchError((err)=>{
+        console.log(err);
+        return err;
+      })
+    ).subscribe();
   }
   
   ngOnDestroy(): void {

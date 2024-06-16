@@ -1,0 +1,111 @@
+.dialog-box {
+    width: 100%;
+    height: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .profile-picture {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        margin: 0 auto;
+        background-color: #ccc;
+        background-size: cover;
+        background-position: center;
+    }
+
+    .dialog-box-title {
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        position: relative;
+        z-index: 100;
+        font-size: 20px;
+        font-weight: 400;
+        margin-bottom: 10px;
+        color: var(--primary-color);
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+        text-align: center;
+
+        .couple {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+
+            input {
+                width: 340px;
+                padding: 10px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                font-size: 16px;
+            }
+        }
+
+        label {
+            display: block;
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        input {
+            width: 95%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+    }
+
+    .error {
+        color: red;
+        font-size: 14px;
+        margin-top: 5px;
+    }
+
+    .dialog-box-footer {
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        position: relative;
+        z-index: 100;
+        display: flex;
+        justify-content: right;
+
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            margin: 0 10px;
+            transition: all 0.3s;
+
+            &:first-child {
+                background-color: #ccc;
+                color: #fff;
+
+                &:hover {
+                    background-color: #bbb;
+                }
+            }
+
+            &:last-child {
+                background-color: var(--primary-color);
+                color: #fff;
+
+                &:hover {
+                    background-color: var(--quaternary-color);
+                }
+            }
+        }
+    }
+}

@@ -5,7 +5,7 @@
     <div class="dashboard-container">
         <div class="top-actions">
             <div class="create-student">
-                <button type="button">Create Student</button>
+                <button type="button" (click)="createStudent()">Create Student</button>
             </div>
             <div class="search">
                 <input type="text" placeholder="Search" [formControl]="searchControl">
@@ -32,8 +32,8 @@
                     <td>{{ student.mobile }}</td>
                     <td>{{ student.createdAt }}</td>
                     <td class="actions">
-                        <button (click)="editStudent(student)">Edit</button>
-                        <button (click)="deleteStudent(student)">Delete</button>
+                        <button (click)="editStudent(student.id)">Edit</button>
+                        <button (click)="deleteStudent(student.id)">Delete</button>
                     </td>
                 </tr>
             </table>

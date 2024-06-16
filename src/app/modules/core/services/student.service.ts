@@ -20,4 +20,16 @@ export class StudentService {
 
     return this.httpClient.get('http://localhost:5071/api/Student', {params: queryToSend});
   }
+
+  addStudent(student: any) {
+    return this.httpClient.post('http://localhost:5071/api/Student', student);
+  }
+
+  updateStudent(student: any) {
+    return this.httpClient.put('http://localhost:5071/api/Student/'+student.id, student);
+  }
+
+  delete(id: string) {
+    return this.httpClient.delete('http://localhost:5071/api/Student/'+id);
+  }
 }
