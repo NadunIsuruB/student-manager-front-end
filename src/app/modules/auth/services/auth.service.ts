@@ -36,6 +36,7 @@ export class AuthService {
   logout(): void {
     localStorage.removeItem("access_token");
     localStorage.removeItem("logged_in");
+    window.location.reload()
   }
 
   getToken(): string {

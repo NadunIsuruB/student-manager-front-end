@@ -10,26 +10,22 @@ import { Route, Router } from '@angular/router';
   styleUrls: ['./auth.component.scss']
 })
 export class AuthComponent implements OnInit, OnDestroy {
-  loginForm: FormGroup;
+  loginForm: FormGroup = new FormGroup({});
   unsubscribe$ = new Subject<void>();
-  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) { }
-  
-  ngOnInit(): void {
-    this.initLoginForm();
-  }
-
-  initLoginForm(): void {
-    if (localStorage.getItem("logged_in")) {
-      this.router.navigate(['/webapp']);
-      return;
-    }
-
+  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) {
     this.loginForm = this.fb.group({
       email: new FormControl('', [
         Validators.required,
       ]),
       password: new FormControl('', [Validators.required])
     })
+   }
+  
+  ngOnInit(): void {
+    if (localStorage.getItem("logged_in")) {
+      this.router.navigate(['/webapp']);
+      return;
+    }
   }
 
   onSubmit() {
