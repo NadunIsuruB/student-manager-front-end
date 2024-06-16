@@ -1,0 +1,58 @@
+html, body {
+    margin: 0;
+    height: 100%;
+}
+
+.website {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+    .top-footer {
+        display: flex;
+        padding: 10px;
+        background-color: var(--secondary-color);
+        color: #d3d3d3;
+        font-size: large;
+        flex-wrap: nowrap;
+        align-items: center;
+        justify-content: center;
+        align-content: flex-start;
+        flex-direction: column;
+        .title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .description {
+            width: 90%;
+            text-align: center;
+            font-size: 0.8rem;
+        }
+        .second-title {
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-bottom: 5px;
+            margin-top: 10px;
+            padding: 5px;
+        }
+        .information {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: flex-start;
+            justify-content: center;
+            align-items: center;
+            .link {
+                color: #fff;
+                text-decoration: none;
+                font-size: 1rem;
+                font-weight: bold;
+                padding: 5px;
+                transition: color 0.3s;
+                &:hover {
+                    color: var(--secondary-color);
+                }
+            }
+        }
+    }
+}
