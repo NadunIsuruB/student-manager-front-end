@@ -3,9 +3,15 @@
         Student Manager
     </div>
     <div class="dashboard-container">
-        <div class="search">
-            <input type="text" placeholder="Search" [formControl]="searchControl">
+        <div class="top-actions">
+            <div class="create-student">
+                <button type="button">Create Student</button>
+            </div>
+            <div class="search">
+                <input type="text" placeholder="Search" [formControl]="searchControl">
+            </div>
         </div>
+
         <div class="table">
             <table matSort (matSortChange)="sortData($event)">
                 <tr>

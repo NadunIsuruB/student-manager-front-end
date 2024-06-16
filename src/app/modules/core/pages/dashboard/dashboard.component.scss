@@ -16,27 +16,41 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding-top: 5%;
+    padding-top: 2%;
     width: 100%;
 
-    .search {
+    .top-actions {
         display: flex;
-        justify-content: center;
+        flex-direction: row;
+        justify-content: right;
         align-items: center;
-        margin-bottom: 20px;
-        input {
-            width: 300px;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
+        width: 100%;
+        padding: 20px;
+        
+        .create-student {
+            button {
+                background-color: var(--quaternary-color);
+                color: white;
+                border: none;
+                padding: 10px 20px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 16px;
+                margin: 4px 2px;
+                cursor: pointer;
+            }
         }
-        button {
-            padding: 10px;
-            background-color: var(--primary-color);
-            color: var(--tertiary-color);
-            border: none;
-            border-radius: 4px;
-            margin-left: 10px;
+        .search {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            input {
+                width: 300px;
+                padding: 10px 20px;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+            }
         }
     }
 
