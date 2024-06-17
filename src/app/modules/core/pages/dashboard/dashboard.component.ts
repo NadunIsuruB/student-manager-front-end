@@ -144,7 +144,9 @@ export class DashboardComponent implements OnInit, OnDestroy {
   }
 
   deleteStudent(id: number) {
-    //confirmation
+    if (confirm("Are you sure you want to delete this record?") == false) {
+      return;
+    }
 
     this.studentService.delete(id.toString())
     .pipe(
