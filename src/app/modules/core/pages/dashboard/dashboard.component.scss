@@ -25,7 +25,7 @@
         justify-content: right;
         align-items: center;
         width: 100%;
-        padding: 20px;
+        padding: 10px;
         
         .create-student {
             button {
@@ -54,30 +54,34 @@
         }
     }
 
-    .table {
-        padding: 10px;
-        border-collapse: collapse;
-        margin-bottom: 20px;
-        table {
-            border: 1px solid #ccc;
-        }
-        th {
-            color: var(--primary-color);
-            font-weight: bold;
-            padding: 10px 5px;
-            width: 195px;
-            justify-content: space-between;
-        }
-        td {
-            justify-content: space-between;
-            border-bottom: 1px solid #ccc;
-            width: 195px;
-            padding: 10px 5px;
-        }
-
-        tr.active td {
-            background-color: var(--tertiary-color) !important;
-            color: var(--secondary-color);
+    .table-container {
+        display: flex;
+        flex-direction: column;
+        .table {
+            padding: 10px;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            table {
+                border: 1px solid #ccc;
+            }
+            th {
+                color: var(--primary-color);
+                font-weight: bold;
+                padding: 10px 5px;
+                width: 195px;
+                justify-content: space-between;
+            }
+            td {
+                justify-content: space-between;
+                border-bottom: 1px solid #ccc;
+                width: 195px;
+                padding: 10px 5px;
+            }
+    
+            tr.active td {
+                background-color: var(--tertiary-color) !important;
+                color: var(--secondary-color);
+            }
         }
     }
 

@@ -3,50 +3,51 @@
         Day School International
     </div>
     <div class="dashboard-container">
-        <div class="top-actions">
-            <div class="create-student">
-                <button type="button" (click)="createStudent()">Create Student</button>
+        <div class="table-container">
+            <div class="top-actions">
+                <div class="create-student">
+                    <button type="button" (click)="createStudent()">Create Student</button>
+                </div>
+                <div class="search">
+                    <input type="text" placeholder="Search" [formControl]="searchControl">
+                </div>
             </div>
-            <div class="search">
-                <input type="text" placeholder="Search" [formControl]="searchControl">
+            <div class="table">
+                <table matSort (matSortChange)="sortData($event)">
+                    <tr>
+                        <th mat-sort-header="firstName">First Name</th>
+                        <th mat-sort-header="lastName">Last Name</th>
+                        <th mat-sort-header="nic">NIC</th>
+                        <th mat-sort-header="email">Email</th>
+                        <th mat-sort-header="phone">Mobile</th>
+                        <th mat-sort-header="regDate">Reg. Date</th>
+                        <th mat-header="actions">Actions</th>
+                    </tr>
+                  
+                    <tr *ngFor="let student of students; let i = index" (click)="ClickedRow(i)" [class.active]="i == highlightRow">
+                        <td>{{ student.firstName }}</td>
+                        <td>{{ student.lastName }}</td>
+                        <td>{{ student.nic }}</td>
+                        <td>{{ student.email }}</td>
+                        <td>{{ student.mobile }}</td>
+                        <td>{{ student.createdAt }}</td>
+                        <td class="actions">
+                            <button (click)="editStudent(student.id)">Edit</button>
+                            <button (click)="deleteStudent(student.id)">Delete</button>
+                        </td>
+                    </tr>
+                </table>
             </div>
-        </div>
-
-        <div class="table">
-            <table matSort (matSortChange)="sortData($event)">
-                <tr>
-                    <th mat-sort-header="firstName">First Name</th>
-                    <th mat-sort-header="lastName">Last Name</th>
-                    <th mat-sort-header="nic">NIC</th>
-                    <th mat-sort-header="email">Email</th>
-                    <th mat-sort-header="phone">Mobile</th>
-                    <th mat-sort-header="regDate">Reg. Date</th>
-                    <th mat-header="actions">Actions</th>
-                </tr>
-              
-                <tr *ngFor="let student of students; let i = index" (click)="ClickedRow(i)" [class.active]="i == highlightRow">
-                    <td>{{ student.firstName }}</td>
-                    <td>{{ student.lastName }}</td>
-                    <td>{{ student.nic }}</td>
-                    <td>{{ student.email }}</td>
-                    <td>{{ student.mobile }}</td>
-                    <td>{{ student.createdAt }}</td>
-                    <td class="actions">
-                        <button (click)="editStudent(student.id)">Edit</button>
-                        <button (click)="deleteStudent(student.id)">Delete</button>
-                    </td>
-                </tr>
-            </table>
-        </div>
-
-        <div class="paginator">
-            <mat-paginator 
-            (page)="handlePageEvent($event)"
-            [length]="length"
-            [pageSize]="pageSize"
-            [pageSizeOptions]="pageSizeOptions"
-            aria-label="Select page">
-            </mat-paginator>
+    
+            <div class="paginator">
+                <mat-paginator 
+                (page)="handlePageEvent($event)"
+                [length]="length"
+                [pageSize]="pageSize"
+                [pageSizeOptions]="pageSizeOptions"
+                aria-label="Select page">
+                </mat-paginator>
+            </div>
         </div>
     </div>
 </div>
